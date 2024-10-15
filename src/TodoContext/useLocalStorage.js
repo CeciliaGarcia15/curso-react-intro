@@ -29,7 +29,20 @@ function useLocalStorage(itemName, initialValue){//esto es un custom hook
   },[]);
 
    
-  
+  //  const defaultTodos = [
+//    { text: "Cortar cebolla", completed: true },
+//    { text: "Tomar el curso de intro a React", completed: false },
+//    { text: "Llorar con la llorona", completed: false },
+//    { text: "LALALALA", completed: false },
+//    { text: "Lalas", completed: false },
+//  ];
+
+// localStorage.setItem('TODOS_V1',defaultTodos);
+
+
+//localStorage.removeItem('TODOS_V1');
+
+
   
     
     const saveItem = (newItem) => {
