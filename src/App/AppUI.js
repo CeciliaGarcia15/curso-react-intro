@@ -8,51 +8,53 @@ import { TodosError } from "../TodosError";
 import { EmptyTodos } from "../EmptyTodos";
 import { TodoContext } from "../TodoContext";
 import React from "react";
+import { Modal } from "../Modal";
 function AppUI() {
   const {
     loading,
     error,
     searchedTodos,
     completeTodo,
-    deleteTodo
+    deleteTodo,
+    openModal,
+    setOpenModal,
   } = React.useContext(TodoContext);
-    return (
-        <>
-          <TodoCounter />
-          <TodoSearch />
-          <TodoList>
-                  {loading && (
-                    <>
-                      <TodosLoading/>
-                      <TodosLoading/>
-                      <TodosLoading/>
-                    </>
-                    
-                    )}
-                  {error && <TodosError/>}
-                  
-                  {/*si no esta cargando 
+  return (
+    <>
+      <TodoCounter />
+      <TodoSearch />
+      <TodoList>
+        {loading && (
+          <>
+            <TodosLoading />
+            <TodosLoading />
+            <TodosLoading />
+          </>
+        )}
+        {error && <TodosError />}
+
+        {
+          /*si no esta cargando 
                   y si la lista de TODOs es
                   igual a cero */
-                  (!loading && searchedTodos.length == 0)  && 
-                  <EmptyTodos/>
-                  }
+          !loading && searchedTodos.length == 0 && <EmptyTodos />
+        }
 
-                  {searchedTodos.map((todo) => (
-                    <TodoItem
-                      key={todo.text}
-                      text={todo.text}
-                      completed={todo.completed}
-                      onComplete={() => completeTodo(todo.text)}
-                      onDelete={() => deleteTodo(todo.text)}
-                    />
-                  ))}
-              </TodoList>
+        {searchedTodos.map((todo) => (
+          <TodoItem
+            key={todo.text}
+            text={todo.text}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </TodoList>
 
-         
-          <CreateTodoButton />
-        </>
-      );
+      <CreateTodoButton/>
+      {openModal && <Modal>La funcionalidad de agregar TODO</Modal>}
+    </>
+  );
 }
 
-export {AppUI}
+export { AppUI };
