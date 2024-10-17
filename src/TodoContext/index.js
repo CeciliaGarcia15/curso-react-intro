@@ -23,6 +23,17 @@ function TodoProvider({ children }) {
     return todoText.includes(searchText);
   });
 
+  //guardar un todo
+  const addTodo = (text) => {
+    const newTodos = [...todos]; //crea una copia de los todos
+    newTodos.push({
+      text: text,
+      completed: false,
+    });
+    saveTodos(newTodos);
+  };
+
+  //darle completado a los todos
   const completeTodo = (text) => {
     const newTodos = [...todos]; //crea una copia de los todos
     const todoIndex = newTodos.findIndex((todo) => todo.text === text);
@@ -30,12 +41,14 @@ function TodoProvider({ children }) {
     saveTodos(newTodos);
   };
 
+  //eliminar los todos
   const deleteTodo = (text) => {
     const newTodos = [...todos]; //crea una copia de los todos
     const todoIndex = newTodos.findIndex((todo) => todo.text === text);
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   };
+
   return (
     <TodoContext.Provider
       value={{
@@ -50,6 +63,7 @@ function TodoProvider({ children }) {
         deleteTodo,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {children}

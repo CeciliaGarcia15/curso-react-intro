@@ -9,7 +9,7 @@ import { EmptyTodos } from "../EmptyTodos";
 import { TodoContext } from "../TodoContext";
 import React from "react";
 import { Modal } from "../Modal";
-import {TodoForm} from '../TodoForm';
+import { TodoForm } from "../TodoForm";
 function AppUI() {
   const {
     loading,
