@@ -6,7 +6,7 @@ function CreateTodoButton() {
 
   return (
     <button
-      onClick={() => setOpenModal(openModal === true ? false : true)}
+      onClick={() => setOpenModal(openModal => !openModal)}
       className="CreateTodoButton"
     >
       +
